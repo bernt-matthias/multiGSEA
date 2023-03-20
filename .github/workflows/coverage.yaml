@@ -7,8 +7,9 @@ on:
 concurrency:
   # Group runs by PR, but keep runs on the default branch separate
   # because we do not want to cancel ToolShed uploads
-  group: pr-${{ (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main') && github.run_number || github.ref }}
+  group: coverage-${{ (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main') && github.run_number || github.ref }}
   cancel-in-progress: true
+
 name: test-coverage
 
 jobs:
