@@ -36,7 +36,7 @@ jobs:
           library(styler)
           result <- style_pkg(strict = TRUE)
           if(nrow(subset(result, changed == TRUE)) > 0){
-            exit(1)
+            stop("lint fail")
           }
         shell: Rscript {0}
 
