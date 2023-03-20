@@ -35,7 +35,7 @@ jobs:
         run: |
           library(styler)
           result <- style_pkg(strict = TRUE)
-          if(nrow(subset(X, changed == TRUE)) > 0){
+          if(nrow(subset(result, changed == TRUE)) > 0){
             exit(1)
           }
         shell: Rscript {0}
