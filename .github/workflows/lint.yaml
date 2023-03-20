@@ -26,6 +26,7 @@ jobs:
 
       - name: Run styler
         run: |
+          library(styler)
           style_pkg(strict = TRUE)
         shell: Rscript {0}
 
