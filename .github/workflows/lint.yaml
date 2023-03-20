@@ -42,4 +42,10 @@ jobs:
 
       - name: Show diff
         if: failure()
-        run: git diff
+        run: git diff > diff.txt
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: 'styler lint report'
+          path: diff.txt
