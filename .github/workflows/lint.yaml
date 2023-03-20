@@ -34,8 +34,12 @@ jobs:
       - name: Run styler
         run: |
           library(styler)
-          style_pkg(strict = TRUE)
+          result <- style_pkg(strict = TRUE)
+          if(nrow(subset(X, changed == TRUE)) > 0){
+            exit(1)
+          }
         shell: Rscript {0}
 
       - name: Show diff
+        if: failure()
         run: git diff
